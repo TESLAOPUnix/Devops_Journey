@@ -1,1 +1,16 @@
-
+This file is for explaining linux commands:
+First of all understand that there are two types of users in linux
+one a general user with certain permissions second root which has the divine power in the machine 
+so to aquire root privilege use sudo command 
+so starting with basic commands 
+ls -lists all the file and dir in the particular working directory
+pwd- prints working directory
+cd -changes directory
+now cd has multiple different combinations
+cd - this will take you to home dir
+cd .. - goes to one step back 
+many more ...
+there are two types of paths relative path and direct path
+for example if lets say you are in /var/www/html and in that html path there is a file index.html
+so in direct path you need to be in /var/www/html and then type ls to know about this file 
+and in relative path you can enter ls then /var/www/html/ this will give all the files in that path
