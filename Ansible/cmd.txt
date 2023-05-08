@@ -1,0 +1,3 @@
+We need one inventory file where all the details of web01 will be present such as host ip host private key 
+then we need to run the following command to see:
+ansible-playbook -i inventory web.yaml
