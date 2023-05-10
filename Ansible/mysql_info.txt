@@ -1,0 +1,2 @@
+all the variables are in group_vars/all 
+make sure to keep login_unix_socket and state as present 
