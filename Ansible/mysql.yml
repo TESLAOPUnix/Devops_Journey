@@ -1,0 +1,43 @@
+---
+- name: setting mysql in ubuntu
+  hosts: web01
+  become: yes
+    #  vars:
+    #dbname: db
+    #dbuser: root
+    #dbpass: password
+  tasks:
+   - name: install mysql
+     apt:
+      name: mysql-server
+      state: present
+   - name: install python
+     apt:
+      name: python3-pymysql
+      state: present
+   - name: start & enable server
+     service:
+      name: mysql
+      state: started
+      enabled: yes
+   - name: user setup in mysql
+     mysql_user:
+      user: "{{dbuser}}"
+      password: "{{dbpass}}"
+      host: web01
+      priv: '*.*:ALL,GRANT'
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+   - name: user second setup in mysql
+     mysql_user:
+      user: nikhil
+      password: ggg
+      priv: '*.*:ALL,GRANT'
+      state: present
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+   - name: create db
+     mysql_db:
+      name: "{{dbname}}"
+      state: present
+      login_unix_socket: /var/run/mysqld/mysqld.sock
+
+                              
