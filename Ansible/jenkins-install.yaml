@@ -1,0 +1,22 @@
+- name: this is for loop when handler
+  hosts: web01
+  become: yes
+  gather_facts: true
+  tasks:
+   - name: install a package
+     apt:
+      name: openjdk-11-jdk
+      state: present
+      update_cache: yes
+     tags:
+      - packages
+   - name: create a install script
+     file:
+      path: ~/install.sh
+      state: touch
+   - name: copy install script to target machine
+     copy:
+      src: /root/vprofile/exc6/install.sh
+      dest: ~/install.sh
+   - name: run jenkins install script
+     command: sh ~/install.sh
